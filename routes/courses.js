@@ -1,6 +1,10 @@
 var express  = require('express');
 var router = express.Router();
 var fs = require('fs');
+var mkdirp = require('mkdirp');
+
+var mongoose = require('mongoose');
+var db = mongoose.connection;
 
 var Course = require('../models/course');
 
@@ -90,23 +94,27 @@ router.get('/editContent',function(req, res, next) {
     });
 });
 
-router.post('/upload', function(req, res) {
+router.post('/upload/:name', function(req, res) {
     console.log(req.files);
+    console.log(req.params.name);
     let sampleFile = req.files.sampleFile;
     var fname = req.files.sampleFile.name;
-    var fpath = '/home/steventobin/repos/entdev/uploads/'+fname;
-    sampleFile.mv(fpath, function(err) {
-        if (err){
-            return res.status(500).send(err);
-        } else {
-            req.flash("success_msg", "File uploaded")
-            res.redirect('/courses/editContent')
+    var fpath = '/home/steventobin/repos/MEHN-app/uploads/'+ req.params.name;
+    mkdirp(fpath, function(err) {
+        sampleFile.mv(fpath+"/"+fname, function(err) {
+            if (err){
+                return res.status(500).send(err);
+            } else {
+                req.flash("success_msg", "File uploaded")
+                res.redirect('/courses/editContent')
 
-        }
-
-
+            }
+        });
     });
-
+    var collection = db.collection('courses');
+    var current = collection.find({name: req.params.name });
+    console.log('found: '+current);
+    Course.addContent(req.params.name,fpath+"/"+fname);
 });
 
 router.get('/:name', function(req, res) {
@@ -118,5 +126,6 @@ router.get('/:name', function(req, res) {
         res.render('displayCourse', {courses: docs});
     });
 });
+
 
 module.exports= router;

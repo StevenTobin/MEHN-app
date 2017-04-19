@@ -19,6 +19,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "mkdirp": "^0.5.1",
     "mongodb": "*",
     "mongoose": "*",
     "passport": "*",

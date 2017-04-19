@@ -24,8 +24,21 @@ module.exports.getCourseByName = function(name, callback) {
 
 module.exports.getCourseById = function(id, callback) {
     Course.findById(id, callback);
-};
+}
 
 module.exports.remove = function (name,callback) {
     Course.find({name: name}).remove().exec();
 }
+
+module.exports.addContent = function (name, path, callback) {
+    Course.findOneAndUpdate(
+        {name: name},
+        {$push: {content: path, filename: path.split('/').pop()}},
+        {safe: true, upsert: true},
+        function(err, model) {
+            console.log(err);
+        }
+    );
+}
+
+

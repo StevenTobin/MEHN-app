@@ -2,6 +2,10 @@
     {{#each courses}}
     <h1>{{name}}</h1>
 </div>
-        {{content}}
+
+        {{#each content}}
+            <div><a href="file:///{{this}}" download>{{this}}</a></div>
+        {{/each}}
+
 
     {{/each}}

@@ -1,9 +1,9 @@
 {{#each courses}}
-    <form action="/courses/upload" method="post" encType="multipart/form-data" id='uploadForm'>
+    <form action="/courses/upload/{{name}}" method="post" encType="multipart/form-data" id='uploadForm'>
         <div class="form-group">
             <label>{{name}}</label>
             <input type="file" name="sampleFile">
-            <button type="submit" value="upload">Upload</button>
+            <button type="submit" name="{{name}}" id="{{name}}" value="upload">Upload</button>
         </div>
     </form>
 {{/each}}
