@@ -1,0 +1,10 @@
+
+    {{#each courses}}
+        <form action="/courses/remove/{{name}}" method="get">
+        <div class="form-group">
+            <label>{{name}}</label>
+            <button type =submit class="btn-danger" name="{{name}}" id={{name}} >delete</button>
+        </div>
+        </form>
+    {{/each}}
+

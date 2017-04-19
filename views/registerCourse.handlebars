@@ -1,0 +1,13 @@
+<h2 class="page-header">Register</h2>
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+{{/if}}
+<form method="post" action="/courses/register">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="name" name="name">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

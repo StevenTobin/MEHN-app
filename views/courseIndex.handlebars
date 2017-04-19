@@ -1,0 +1,15 @@
+<h2 class="page-header">Courses</h2>
+<div data-role="page" id="document-library">
+
+    <div data-role="content">
+        <ul>
+                {{#each courses}}
+                    <li style="float:left;padding:10px 0;width:100%;">
+                        <a href="{{name}}" data-transition="slide">
+                            <strong>{{name}}</strong>
+                        </a>
+                    </li>
+                {{/each}}
+        </ul>
+    </div>
+</div>
