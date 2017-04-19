@@ -87,7 +87,7 @@ router.get('/editContent', ensureAuthenticated, function(req, res, next) {
 });
 
 router.post('/upload/:name', ensureAuthenticated, function(req, res) {
-    if(req.body.action()) {
+    if(req.body.action == 'Upload') {
         let sampleFile = req.files.sampleFile;
         var fname = req.files.sampleFile.name;
         var fpath = '/home/steventobin/repos/MEHN-app/uploads/' + req.params.name;
@@ -108,12 +108,13 @@ router.post('/upload/:name', ensureAuthenticated, function(req, res) {
             });
         });
     } else {
-        console.log()
+        res.redirect('/courses/arrange/'+req.params.name);
     }
 });
 
-router.get('/arrange', function(req, res) {
-    var query = Course.find({});
+router.get('/arrange/:name', function(req, res) {
+    console.log(req.params.name);
+    var query = Course.find({name: req.params.name});
     query.exec(function (err, docs) {
         if (err) {
             throw Error;

@@ -1,8 +1,19 @@
+<div class="jumbotron">
 {{#each courses}}
-    <form action="/courses/arrange/{{name}}" method="post" id='arrangeForm'>
-        <div class="form-group">
-            <label>{{name}}</label>
-            <button class="btn btn-link" type="submit" value="Arrange">Arrange</button>
-        </div>
-    </form>
+        <h1>{{name}}</h1>
+    </div>
+    <table class="table-bordered">
+        <form>
+            <button class="btn btn-info">new</button>
+        </form>
+        {{#each content}}
+            <tr>
+                <td><a href="file:///{{this}}" draggable="true" download="">{{substr this}}</a></td>
+                <td><button class="btn btn-info">move up</button></td>
+                <td><button class="btn btn-danger">move down</button></td>
+            </tr>
+        {{/each}}
+    </table>
+
+
 {{/each}}
