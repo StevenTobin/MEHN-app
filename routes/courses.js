@@ -99,7 +99,7 @@ router.post('/upload/:name', function(req, res) {
     console.log(req.params.name);
     let sampleFile = req.files.sampleFile;
     var fname = req.files.sampleFile.name;
-    var fpath = '/home/steventobin/repos/MEHN-app/uploads/'+ req.params.name;
+    var fpath = '/home/ubuntu/MEHN-app/uploads/'+ req.params.name;
     mkdirp(fpath, function(err) {
         sampleFile.mv(fpath+"/"+fname, function(err) {
             if (err){
