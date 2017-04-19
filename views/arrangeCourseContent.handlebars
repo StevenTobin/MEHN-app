@@ -1,0 +1,11 @@
+{{#each courses}}
+    <div class="page-header"><h1>{{name}}</h1></div>
+        <table>
+            {{#each content}}
+                <tr>
+                    <td><i style="font-size:24px" class="glyphicon glyphicon-file"></i></td>
+                    <td><a href="file:///{{this}}" download="">{{substr this}}</a></td>
+                </tr>
+            {{/each}}
+        </table>
+{{/each}}

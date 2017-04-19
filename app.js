@@ -10,9 +10,10 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var fileupload = require('express-fileupload')
+var fileupload = require('express-fileupload');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
+
 
 mongoose.connect('mongodb://localhost/entdev');
 var db = mongoose.connection;
@@ -26,7 +27,9 @@ var app = express();
 
 //View engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({'defaultLayout':'layout'}));
+app.engine('handlebars', exphbs({'defaultLayout':'layout',
+                                helpers: require("./public/js/helpers.js").helpers})
+                                );
 app.set('view engine', 'handlebars');
 
 //bodyparser
@@ -39,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //session
 app.use(session({
     secret: 'secret',
-    saveUninitilized: true,
+    saveUninitialized: true,
     resave: true
 }));
 
@@ -49,6 +52,9 @@ app.use(passport.session());
 
 //fileuploader
 app.use(fileupload());
+
+
+
 
 //express validator (code from express-validator github)
 app.use(expressValidator({

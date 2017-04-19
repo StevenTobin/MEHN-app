@@ -1,0 +1,8 @@
+{{#each courses}}
+    <form action="/courses/arrange/{{name}}" method="post" id='arrangeForm'>
+        <div class="form-group">
+            <label>{{name}}</label>
+            <button class="btn btn-link" type="submit" value="Arrange">Arrange</button>
+        </div>
+    </form>
+{{/each}}
