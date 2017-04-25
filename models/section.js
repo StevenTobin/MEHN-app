@@ -29,16 +29,21 @@ module.exports.getSectionByName = function(name, callback) {
     Section.findOne(query, callback);
 };
 
+module.exports.remove = function (name,callback) {
+    Section.find({course: name}).remove().exec();
+};
+
 module.exports.getSectionById = function(id, callback) {
     Section.findById(id, callback);
 };
 
 module.exports.addSectionContent = function(courseName, sectionName, path, callback) {
     Section.findOneAndUpdate(
-        {_id: sectionName, course: courseName},
+        {_id: courseName+sectionName, course: courseName},
         {$push: {content: path }},
         {upsert: true}, function(err,docs){
             console.log(docs);
         }
     )
 };
+
