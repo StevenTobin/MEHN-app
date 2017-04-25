@@ -2,14 +2,18 @@
     {{#each courses}}
     <h1>{{name}}</h1>
 </div>
-        <table>
-        {{#each content}}
+        <table class="table table-bordered">
+        {{#each sections}}
             <tr>
-                <td><i style="font-size:24px" class="glyphicon glyphicon-file"></i></td>
-                <td><a href="file:///{{this}}" download="">{{substr this}}</a></td>
+                <td><h3>{{name}}</h3></td>
+            <tr>
+            {{#each this.content}}
+                <tr>
+                    <td><span class="glypicon glyphicon-download-alt"></span><a href="/courses/download/{{../../name}}/{{substr this}}">{{substr this}}</a></td>
+                </tr>
+            {{/each}}
+
             </tr>
         {{/each}}
         </table>
-
-
     {{/each}}

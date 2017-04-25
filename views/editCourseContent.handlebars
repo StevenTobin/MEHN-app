@@ -5,7 +5,15 @@
         <label>{{name}}</label>
         <input type="file" name="sampleFile">
         <button class="btn btn-link" name="action" type="submit" value="Upload">Upload</button>
+        <select name="sectionSelect">
+            {{#each sections}}
+                <option value="{{name}}">{{name}}</option>
+            {{/each}}
+        </select>
         <button class="btn btn-link" name="action" type="submit" value="Arrange">Arrange</button>
+        <button class="btn btn-link" name="action" type="submit" value="Publish/unpublish">Publish/unpublish</button>
+        <input type="text" name="sectionHeading">
+        <button class="btn btn-link" name="action" type="submit" value="NewSection">New Section</button>
     </div>
 </form>
 </div>

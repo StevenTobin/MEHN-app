@@ -1,10 +1,12 @@
 <h2 class="page-header">Home</h2>
 <p>Welcome</p>
 <td>
-    <ul>
-        {{#if admin}}
-            <li role="presentation"><a href="/courses/register">Create Course</a></li>
-            <li role="presentation"><a href="/courses">Courses</a></li>
-        {{/if}}
-    </ul>
+    <table class="table table-bordered">
+        {{#each courses}}
+            <tr>
+                <td><a href="/courses/{{name}}" data-transition="slide">
+                    <strong>{{name}}</strong></a></td>
+            </tr>
+        {{/each}}
+    </table>
 </td>

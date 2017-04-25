@@ -1,15 +1,13 @@
 <h2 class="page-header">Courses</h2>
 <div data-role="page" id="document-library">
-
     <div data-role="content">
-        <ul>
+        <table class="table table-bordered">
                 {{#each courses}}
-                    <li style="float:left;padding:10px 0;width:100%;">
-                        <a href="/courses/{{name}}" data-transition="slide">
-                            <strong>{{name}}</strong>
-                        </a>
-                    </li>
+                    <tr>
+                    <td><a href="/courses/{{name}}" data-transition="slide">
+                            <strong>{{name}}</strong></a></td>
+                    </tr>
                 {{/each}}
-        </ul>
+            </table>
     </div>
 </div>

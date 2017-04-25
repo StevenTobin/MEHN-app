@@ -3,9 +3,13 @@ var register = function(Handlebars) {
         // put all of your helpers inside this object
         substr: function(string){
             return string.split("/").pop();
+        },
+
+        course: function(string){
+            let str = string.split("/")
+            return str[str.length -2]
         }
     };
-
     if (Handlebars && typeof Handlebars.registerHelper === "function") {
         // register helpers
         for (var prop in helpers) {

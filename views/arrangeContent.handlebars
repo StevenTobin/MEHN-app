@@ -2,18 +2,22 @@
 {{#each courses}}
         <h1>{{name}}</h1>
     </div>
-    <table class="table-bordered">
-        <form>
-            <button class="btn btn-info">new</button>
-        </form>
-        {{#each content}}
+    <form>
+    <table class="table table-bordered">
+        {{#each sections}}
             <tr>
-                <td><a href="file:///{{this}}" draggable="true" download="">{{substr this}}</a></td>
-                <td><button class="btn btn-info">move up</button></td>
-                <td><button class="btn btn-danger">move down</button></td>
+                <td><h3>{{name}}</h3></td>
             </tr>
+            <tr>
+                <td><button class="btn btn-info">new</button></td>
+            </tr>
+                {{#each content}}
+                    <td><button class="btn btn-info">new</button></td>
+                {{/each}}
+
         {{/each}}
     </table>
+    </form >
 
 
 {{/each}}
