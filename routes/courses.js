@@ -90,7 +90,7 @@ router.post('/upload/:name', ensureAuthenticated, function(req, res) {
     if(req.body.action == 'Upload') {
         let sampleFile = req.files.sampleFile;
         let fname = req.files.sampleFile.name;
-        let fpath = '/home/steventobin/repos/MEHN-app/uploads/' + req.params.name;
+        let fpath = '/home/ubuntu/MEHN-app/uploads/' + req.params.name;
         mkdirp(fpath, function (err) {
             sampleFile.mv(fpath + "/" + fname, function (err) {
                 if (err) {
@@ -125,7 +125,7 @@ router.post('/upload/:name', ensureAuthenticated, function(req, res) {
 
 
 router.get('/download/:course/:name', function(req, res){
-    var file = '/home/steventobin/repos/MEHN-app/uploads/'+req.params.course+'/'+req.params.name;
+    var file = '/home/ubuntu/MEHN-app/uploads/'+req.params.course+'/'+req.params.name;
     res.download(file); // Set disposition and send it.
 });
 
