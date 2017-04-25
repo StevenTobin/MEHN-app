@@ -40,6 +40,8 @@ router.post('/register', function (req, res) {
         });
     } else {
 
+            // for now just check if the user has an @wit.ie email
+            //  to make them an admin/lecturer??
         sub = "@wit.ie";
         if(email.indexOf(sub) !== -1) {
             admin = true;
@@ -63,7 +65,7 @@ router.post('/register', function (req, res) {
     }
 });
 
-
+// All this is taken directly from the docs http://passportjs.org/docs
 passport.use(new LocalStrategy(
     function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
